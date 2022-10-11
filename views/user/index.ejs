@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../layouts/head'); %>
+</head>
+<body class="container-fluid">
+
+<header>
+    <%- include('../layouts/header'); %>
+</header>
+
+<main>
+    <h1>Users Table</h1>
+    <table>
+
+            <tr>
+
+            </tr>
+
+    </table>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for(var i=0; i < users.length; i++) { %>
+        <tr>
+            <th scope="row"><%= i + 1 %></th>
+            <td><%= users[i].first_name %></td>
+            <td><%= users[i].last_name %></td>
+            <td>
+                <a href="/user/<%= users[i]._id %>" class="btn btn-primary">Edit</a>
+                <form action="/user/delete/<%= users[i]._id %>" class="d-inline" method="post">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+</main>
+
+<footer>
+    <%- include('../layouts/footer'); %>
+</footer>
+
+</body>
+</html>
